@@ -1,2 +1,4 @@
 # AnimationExample
-React Native AnimationExperimental API
+
+Example for React Native AnimationExperimental API
+
