@@ -127,9 +127,13 @@ var AnimationExample = React.createClass({
     }
   },
 
+  componentDidMount(){
+    console.log(this)
+  },
+
   render() {
     return (
-      <ScrollView>
+      <ScrollView ref="this" >
         <View style={styles.container}>
           <View style={styles.items}>
             <Button onPress={ () => this.animationOpacity() }>
