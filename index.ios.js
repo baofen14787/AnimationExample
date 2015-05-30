@@ -38,6 +38,14 @@ var AnimationExample = React.createClass({
 
   mixins: [TimerMixin],
 
+  animationTransform(){
+      this.setState({
+            selected: !this.state.selected
+        });
+      // this.state.selected = !this.state.selected;
+      console.log(this.state.selected)
+  },
+
   animationPosition(){
     AnimationExperimental.startAnimation({
       node: this.refs['position'],
@@ -123,7 +131,8 @@ var AnimationExample = React.createClass({
 
   getInitialState() {
     return {
-      scale: [1, 1]
+      scale: [1, 1],
+      selected : null
     }
   },
 
@@ -132,10 +141,25 @@ var AnimationExample = React.createClass({
   },
 
   render() {
+
+    var style = this.state.selected ? [ styles.box,{transform:[{translateX:40}]} ] : styles.box;
+
+      console.log(this.state.selected,[ styles.box,{transform:[{translateX:40}]} ])
+
+
     return (
-      <ScrollView ref="this" >
+      <ScrollView ref="this">
+
         <View style={styles.container}>
+
           <View style={styles.items}>
+            <Button onPress={ () => this.animationTransform() }>
+            开始动画(Transform)
+            </Button>
+            <View style={style}></View>
+          </View>
+
+          <View style={style}>
             <Button onPress={ () => this.animationOpacity() }>
             开始动画(opacity)
             </Button>
